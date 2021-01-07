@@ -6,7 +6,7 @@
 
 ## Features
 - Gerar citações aleatórias.
-- Compartilhar citaçções no twitter.
+- Compartilhar citações no Twitter.
 
 
 ## Tecnologias
@@ -14,5 +14,6 @@
 - Fetch
 - Quotable API
 
-
+## Link do Projeto
+https://codepen.io/it-maiara-costa/pen/GRpvdyO
 
