@@ -1,0 +1,57 @@
+const { useEffect, useState } = React;
+
+const App = () => {
+   const [author, setAuthor] = useState("");
+   const [quote, setQuote] = useState("");
+
+   const getQuote = () => {
+      let url =
+         "https://api.quotable.io/random";
+
+      fetch(url)
+         .then((res) => res.json())
+         .then(function (data) {
+            let dados = data;
+            setQuote(dados.content);
+            setAuthor(dados.author);
+         })
+         .catch(function () {
+            console.log("Erro ao se conectar a API");
+         });
+   };
+
+   useEffect(() => {
+      getQuote();
+   }, []);
+
+   return (
+      <div className="App">
+         <h1> Random Quote Machine </h1>
+
+         <div id="quote-box">
+            <blockquote>
+               <i class="fa fa-quote-left fa"> </i>
+               <p id="text">{quote} </p>
+               <i class="fa fa-quote-right fa"></i>
+
+               <cite id="author"> - {author}</cite>
+            </blockquote>
+
+            <div className="btns">
+               <button id="new-quote" onClick={getQuote}>
+                  <i class="fas fa-random"> </i>
+               </button>
+               <a
+                  href={`https://twitter.com/intent/tweet?text= + ${quote}`}
+                  target="_blank"
+                  id="tweet-quote"
+               >
+                  <i class="fab fa-twitter"> </i>
+               </a>
+            </div>
+         </div>
+      </div>
+   );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
